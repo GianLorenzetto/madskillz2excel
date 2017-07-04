@@ -1,6 +1,6 @@
 'use strict'
 
-function writeFile(filename, data) {
+function writeFile(filename: string, data: string) {
   require('fs').writeFile(filename, data, function (err) {
     if (err) {
       throw err
@@ -9,14 +9,14 @@ function writeFile(filename, data) {
   })
 }
 
-function download(host, path, cb) {
+function download(host:string, path:string, cb: (data: string) => void) {
   var data = "";
   var request = require("https").get({ 
     host,
     path 
   }, function(res) {
     if (res.statusCode === 301 || res.statusCode === 302) {
-      download(res.headers.location, cb)
+      download(res.headers.location, '', cb)
       return
     }
 
@@ -30,7 +30,7 @@ function download(host, path, cb) {
   });
 
   request.on('error', function(e) {
-    console.log("Got error: " + e.message)``
+    console.log("Got error: " + e.message)
   });
 }
 

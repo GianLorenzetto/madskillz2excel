@@ -1,11 +1,11 @@
 'use strict'
 
 function writeFile(filename, data) {
-  require('fs').writeFile(filename, data, function​ (err) {
-    ​if​ (err) {
-      ​throw​ err;
-    }
-    console.log(`Data saved to file '${filename}`);
+  require('fs').writeFile(filename, data, function (err) {
+    if (err) {
+      throw err
+    }    
+    console.log(`Data saved to file '${filename}`)
   })
 }
 
@@ -21,16 +21,16 @@ function download(host, path, cb) {
     }
 
     res.on('data', function(chunk) {
-      data += chunk;
+      data += chunk
     });
 
     res.on('end', function() {
-      cb(data);
+      cb(data)
     })
   });
 
   request.on('error', function(e) {
-    console.log("Got error: " + e.message);
+    console.log("Got error: " + e.message)``
   });
 }
 
